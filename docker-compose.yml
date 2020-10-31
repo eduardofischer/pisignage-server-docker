@@ -1,0 +1,19 @@
+version: '2'
+services:
+  mongo:
+    image: mongo:3.4
+    restart: always
+    ports:
+      - 27017:27017
+      
+  pisignage-server:
+    build: .
+    container_name: pisignage_server
+    depends_on:
+      - mongo
+    restart: always
+    ports:
+      - "4000:3000"
+    environment:
+      MONGO_URI: mongodb://mongo/pisignage-server
+      NODE_ENV: docker
