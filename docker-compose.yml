@@ -7,7 +7,7 @@ services:
       - 27017:27017
       
   pisignage-server:
-    build: .
+    image: ghcr.io/eduardofischer/pisignage-server:latest
     container_name: pisignage_server
     depends_on:
       - mongo
